@@ -1,8 +1,11 @@
 # HMS Networks Solution Center
-# Ewon JTK Java Library Release Branch Script for GitHub Actions
+# Make Branch Action for Maven-based Ewon ETK Project Releases
 # Version: 1.0
+#
+# This action is configured to automatically run when a release
+# tag is created in the following syntax: `v*`.
 
-name: Ewon Java Library Release Branch Builder
+name: Release (Make Branch)
 
 on:
   push:
@@ -26,6 +29,7 @@ jobs:
           branchPrefix="release/"
           branchName="$branchPrefix$tagRevision"
           echo ::set-output name=SOURCE_TAG::"$branchName"
+
       - name: Create Branch
         uses: peterjgrainger/action-create-branch@v2.0.1
         with:
